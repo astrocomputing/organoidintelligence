@@ -1,4 +1,4 @@
------
+---
 
 **Chapter 3: Principles of Neural Computation and Learning**
 
@@ -44,37 +44,43 @@ The characteristic shape of the action potential is orchestrated by the sequenti
 
 ```
 +--------------------------------------------------------------------------+
-| Figure 3.2: The Action Potential (AP) Phases and Ion Channels            |
+| Figure 3.2: The Action Potential (AP) - Phases and Ionic Basis           |
 |--------------------------------------------------------------------------|
 | Content:                                                                 |
-| A graph showing membrane potential ($V_m$, mV) vs. time (ms) depicting a |
-| single action potential. Clearly label:                                  |
-| 1. Resting potential ($V_{rest}$)                                        |
-| 2. Threshold potential ($V_T$)                                           |
-| 3. Depolarization phase (rising phase) - Indicate VGSC opening, $Na^{+}$ |
-|    influx.                                                               |
-| 4. Repolarization phase (falling phase) - Indicate VGSC inactivation,    |
-|    VGKC opening, $K^{+}$ efflux.                                         |
-| 5. Hyperpolarization phase (AHP / undershoot) - Indicate slow VGKC closure|
-| 6. Refractory periods (Absolute & Relative).                             |
+| A graph showing Membrane Potential ($V_m$, mV) vs. Time (ms) for a typical AP.|
+| Clearly label the following phases and events:                           |
+| - Resting Potential ($V_{rest}$)                                        |
+| - Threshold Potential ($V_T$)                                           |
+| - Rising Phase (Depolarization to ~+30mV): Indicate rapid VGSC activation|
+|   and $Na^{+}$ influx (show gNa trace increasing sharply).               |
+| - Falling Phase (Repolarization): Indicate VGSC inactivation and VGKC    |
+|   activation allowing $K^{+}$ efflux (show gNa decreasing, gK increasing).|
+| - Undershoot (Afterhyperpolarization, AHP): Indicate slow VGKC closure   |
+|   (gK remains elevated then slowly declines).                            |
+| - Refractory Periods (Absolute during falling phase due to VGSC          |
+|   inactivation; Relative during AHP due to hyperpolarization & residual |
+|   K+ conductance).                                                       |
+| - Axes clearly labeled with units.                                       |
 +--------------------------------------------------------------------------+
 ```
 
-Following an action potential, there is a brief **refractory period** during which it is difficult or impossible for the neuron to fire another action potential. The **absolute refractory period**, occurring during the repolarization phase when VGSCs are inactivated, prevents any further firing regardless of stimulus strength. The **relative refractory period**, occurring during the hyperpolarization phase when VGSCs have recovered but VGKCs may still be open, requires a stronger-than-usual stimulus to reach threshold $V_T$. The refractory period limits the maximum firing rate of a neuron and ensures the unidirectional propagation of action potentials along the axon.
+Immediately following an action potential, the neuron enters a **refractory period**, a brief interval during which its excitability is reduced. The **absolute refractory period** corresponds roughly to the duration of the spike itself (rising and falling phases), during which the VGSCs are either already activated or inactivated, making it impossible to generate another spike regardless of stimulus intensity. This ensures that action potentials are discrete events. The **relative refractory period** follows, typically during the AHP, where VGSCs have recovered from inactivation but the membrane is hyperpolarized and $K^{+}$ conductance may still be elevated. During this phase, a stronger-than-usual stimulus is required to reach threshold $V_T$. The refractory period limits the maximum frequency at which a neuron can fire action potentials and plays a crucial role in ensuring the unidirectional propagation of signals along the axon.
 
-Once generated at the axon hillock, the action potential propagates actively and without decrement (loss of amplitude) along the length of the axon, often over long distances. In unmyelinated axons, this occurs through the continuous regeneration of the AP at adjacent patches of membrane. In myelinated axons (where glial cells wrap insulating myelin sheaths around the axon, interrupted by gaps called nodes of Ranvier), propagation is much faster through **saltatory conduction**, where the AP "jumps" from one node (rich in voltage-gated channels) to the next. When the action potential reaches the axon terminals, it triggers the influx of calcium ions ($Ca^{2+}$) through voltage-gated calcium channels, initiating the process of **neurotransmitter release** into the synaptic cleft, thereby transmitting the signal to the next neuron in the circuit. This entire cycle – synaptic integration, threshold detection, action potential generation, propagation, and synaptic transmission – forms the fundamental basis of neuronal communication and information processing.
+Once generated at the axon hillock, the action potential propagates actively and without decrement (loss of amplitude) along the length of the **axon** towards the presynaptic terminals. This propagation occurs without loss of amplitude because the depolarization associated with the AP at one point triggers the opening of adjacent VGSCs, continuously regenerating the spike along the axonal membrane. In **unmyelinated axons**, this propagation is relatively slow as it involves sequential activation of channels along the entire length. In **myelinated axons**, the axon is wrapped in insulating myelin sheaths formed by glial cells, interrupted at regular intervals by gaps called **nodes of Ranvier**. Voltage-gated channels are highly concentrated at these nodes. The action potential effectively "jumps" rapidly from node to node (**saltatory conduction**), significantly increasing the conduction velocity, which is crucial for rapid communication over long distances in the nervous system.
+
+When the action potential finally reaches the **axon terminal**, the depolarization triggers the opening of **voltage-gated calcium channels (VGCCs)** specifically located there. The resulting influx of $Ca^{2+}$ into the presynaptic terminal is the critical signal that initiates the complex process of **neurotransmitter release**. $Ca^{2+}$ binds to proteins associated with synaptic vesicles (small membrane-bound sacs filled with neurotransmitter molecules), causing these vesicles to fuse with the presynaptic membrane and release their contents into the synaptic cleft via exocytosis. This chemical signal then diffuses across the cleft to activate postsynaptic receptors, completing the process of synaptic transmission and allowing the signal to be passed on to the next neuron(s) in the circuit. The intricate interplay of these electrical and chemical signaling events forms the fundamental basis for all information processing within biological neural networks.
 
 **3.2 Neural Plasticity: The Basis of Learning and Adaptation**
 
-A key feature that distinguishes biological neural networks from most conventional computing hardware is their remarkable capacity for **plasticity** – the ability to modify their structure, properties, and function in response to changes in neural activity or external stimuli. This adaptability is widely believed to be the fundamental biological basis for learning, memory formation, adaptation to changing environments, and recovery from injury. Understanding the mechanisms of neural plasticity is absolutely central to the goals of Organoid Intelligence, as OI systems aim to leverage these intrinsic biological learning rules to acquire computational capabilities. Neural plasticity occurs at multiple levels, but two major categories are **synaptic plasticity** (changes in the strength or efficacy of connections between neurons) and **intrinsic plasticity** (changes in the excitability or firing properties of individual neurons).
+Perhaps the most remarkable and computationally relevant property of biological neural networks is their capacity for **plasticity** – the ability to modify their own structure, properties, and function in response to ongoing neural activity, sensory experience, or neuromodulatory signals. This inherent adaptability is widely accepted as the fundamental biological substrate underlying learning, memory formation, cognitive flexibility, developmental refinement of circuits, and recovery from injury. Understanding the diverse mechanisms of neural plasticity is absolutely central to the goals of Organoid Intelligence, as OI systems explicitly aim to leverage these intrinsic biological learning rules to acquire new computational capabilities and adapt their behavior. Neural plasticity manifests at multiple levels, from changes at individual synapses (**synaptic plasticity**) to alterations in the intrinsic firing properties of neurons (**intrinsic plasticity**) and even physical remodeling of neuronal structures (**structural plasticity**).
 
-**Synaptic plasticity** refers to activity-dependent changes in the strength or efficacy of synaptic transmission between neurons. It is considered the primary mechanism underlying learning and memory storage in the brain. The concept dates back to Donald Hebb's postulate in 1949 (**Hebbian learning**), often summarized as "neurons that fire together, wire together." This principle suggests that if a presynaptic neuron repeatedly or persistently takes part in firing a postsynaptic neuron, the connection between them should be strengthened. Conversely, connections might weaken if their activity is uncorrelated. Decades of research have identified specific physiological processes that embody Hebbian and other forms of synaptic plasticity.
+**Synaptic plasticity**, the activity-dependent modification of the strength or efficacy of communication across synapses, is the most extensively studied form of neural plasticity and is considered the primary mechanism for information storage in the brain. The foundational concept dates back to Donald Hebb's 1949 postulate (**Hebbian learning**), often simplified as the phrase **"neurons that fire together, wire together"**. Hebb proposed that if a presynaptic neuron (cell A) repeatedly or persistently takes part in firing a postsynaptic neuron (cell B), then the efficiency of the synapse from A to B should increase. This Hebbian learning rule provides a simple, local mechanism for associative learning, where connections representing correlated activity patterns are strengthened. Conversely, connections between neurons with uncorrelated activity might weaken. Decades of subsequent research have uncovered specific physiological processes that instantiate Hebbian and other forms of synaptic plasticity.
 
-The most extensively studied forms of synaptic plasticity in the mammalian brain, particularly in regions like the hippocampus and cortex (relevant to many organoid models), are **Long-Term Potentiation (LTP)** and **Long-Term Depression (LTD)**. LTP refers to a long-lasting enhancement of synaptic transmission resulting from brief periods of high-frequency stimulation or correlated pre- and postsynaptic activity. LTD refers to a long-lasting decrease in synaptic efficacy resulting from prolonged periods of low-frequency stimulation or uncorrelated activity. Both LTP and LTD have been demonstrated at various synapse types, with the mechanisms at excitatory glutamatergic synapses being particularly well-characterized.
+The most prominent and well-characterized forms of long-lasting synaptic plasticity in the mammalian central nervous system, particularly demonstrated in brain regions crucial for learning and memory like the hippocampus and neocortex (regions often targeted in brain organoid models), are **Long-Term Potentiation (LTP)** and **Long-Term Depression (LTD)**. LTP refers to a persistent (lasting minutes, hours, days, or longer) enhancement of synaptic transmission efficacy following brief periods of high-frequency presynaptic stimulation (e.g., tetanus) or temporally correlated pre- and postsynaptic activity. LTD, conversely, refers to a persistent decrease in synaptic efficacy induced by prolonged periods of low-frequency stimulation or specific patterns of uncorrelated or asynchronous pre- and postsynaptic activity. The ability of synapses to undergo both LTP and LTD allows for bidirectional modification of connection strengths, essential for flexible learning and memory storage.
 
-The induction of LTP at many excitatory synapses critically depends on the **N-methyl-D-aspartate (NMDA) receptor**, a specific type of glutamate receptor. Under normal resting membrane potentials ($V_{rest}$), the NMDA receptor channel is blocked by a magnesium ion ($Mg^{2+}$). However, if the postsynaptic membrane is sufficiently depolarized (e.g., by strong activation of nearby AMPA receptors, another glutamate receptor type, or by back-propagating action potentials from the soma) *at the same time* that glutamate binds, the $Mg^{2+}$ block is relieved. This allows calcium ions ($Ca^{2+}$) to flow into the postsynaptic neuron through the NMDA receptor channel. This influx of $Ca^{2+}$ acts as a critical second messenger, triggering intracellular signaling cascades involving various kinases (like CaMKII, PKA, PKC) that ultimately lead to the strengthening of the synapse. Common mechanisms include the phosphorylation of existing AMPA receptors (increasing their conductance) and, crucially, the insertion of additional AMPA receptors into the postsynaptic membrane, making the synapse more responsive to future glutamate release. This dependence on both presynaptic glutamate release and postsynaptic depolarization makes the NMDA receptor a molecular coincidence detector, neatly implementing a Hebbian-like rule.
+The molecular mechanisms underlying LTP and LTD at excitatory glutamatergic synapses (the most common type in the cortex and hippocampus) have been intensely studied. A key player in many forms of LTP induction is the **N-methyl-D-aspartate (NMDA) receptor**. This receptor channel is unique because it requires both the binding of the neurotransmitter glutamate *and* sufficient depolarization of the postsynaptic membrane to relieve a voltage-dependent block by magnesium ions ($Mg^{2+}$). When both conditions are met (coincident pre- and postsynaptic activity), the NMDA receptor channel opens, allowing a significant influx of calcium ions ($Ca^{2+}$) into the postsynaptic spine. This rise in intracellular $Ca^{2+}$ acts as a critical second messenger, activating various downstream signaling cascades. High levels of $Ca^{2+}$ influx typically activate calcium/calmodulin-dependent protein kinase II (CaMKII) and other kinases (like PKA, PKC), which phosphorylate target proteins, including existing AMPA-type glutamate receptors (increasing their conductance) and regulatory proteins involved in trafficking. A key outcome is the **insertion of additional AMPA receptors** into the postsynaptic membrane from intracellular pools. This increase in the number of functional AMPA receptors makes the synapse more sensitive to subsequent glutamate release, resulting in a larger EPSP – the expression of LTP. This NMDA receptor-dependent mechanism elegantly implements a Hebbian rule, acting as a molecular detector of coincident pre- and postsynaptic activity.
 
-Conversely, LTD induction at the same synapses often results from weaker or less correlated activity patterns that lead to a smaller, more prolonged influx of $Ca^{2+}$ through NMDA receptors (or other calcium sources). This lower level of calcium preferentially activates intracellular phosphatases (like calcineurin and PP1), which dephosphorylate AMPA receptors and other target proteins, leading to the removal (internalization) of AMPA receptors from the postsynaptic membrane. This reduction in postsynaptic AMPA receptors makes the synapse less responsive to subsequent glutamate release, resulting in long-term depression of synaptic efficacy. The precise balance between kinase and phosphatase activity, often determined by the amplitude and dynamics of the postsynaptic $Ca^{2+}$ signal, thus dictates whether LTP or LTD is induced, allowing synapses to bidirectionally modify their strength based on activity history.
+Conversely, LTD induction at the same synapses is often triggered by more modest or prolonged increases in postsynaptic $Ca^{2+}$ (e.g., resulting from low-frequency stimulation). These lower calcium levels preferentially activate **protein phosphatases**, such as calcineurin (PP2B) and protein phosphatase 1 (PP1). These phosphatases act antagonistically to kinases, dephosphorylating AMPA receptors and other target proteins. This often leads to the **removal (internalization via endocytosis) of AMPA receptors** from the postsynaptic membrane. The resulting decrease in the number of postsynaptic AMPA receptors makes the synapse less responsive to glutamate, causing a long-lasting depression of synaptic efficacy (LTD). Thus, the amplitude and temporal dynamics of the postsynaptic $Ca^{2+}$ signal appear to act as a key determinant, activating different downstream signaling pathways (kinases vs. phosphatases) to bidirectionally regulate synaptic strength via AMPA receptor trafficking. Other mechanisms, including presynaptic changes in neurotransmitter release probability or involvement of different receptor types (e.g., metabotropic glutamate receptors), also contribute to the diversity of LTP and LTD forms observed across different brain regions and synapse types.
 
 ```
 +-------------------------------------------------------------------------------------------------+
@@ -83,23 +89,23 @@ Conversely, LTD induction at the same synapses often results from weaker or less
 | Content:                                                                                        |
 | A detailed diagram of a glutamatergic synapse (presynaptic terminal, cleft, postsynaptic spine). |
 |                                                                                                 |
-| **LTP Induction (High Ca2+):**                                                                  |
+| **LTP Induction (High $Ca^{2+}$):**                                                              |
 | - Show high-frequency presynaptic Glu release + strong postsynaptic depolarization relieving     |
 |   NMDAR Mg2+ block -> Large $Ca^{2+}$ influx.                                                   |
-| - Indicate activation of Kinases (CaMKII).                                                      |
+| - Indicate activation of Kinases (CaMKII emphasized).                                            |
 | - Show downstream effects: Phosphorylation of AMPARs (↑ conductance) & Insertion of new AMPARs. |
 | - Result: Potentiated synapse (larger EPSP).                                                    |
 |                                                                                                 |
-| **LTD Induction (Low Ca2+):**                                                                   |
+| **LTD Induction (Low $Ca^{2+}$):**                                                               |
 | - Show low-frequency presynaptic Glu release + weak postsynaptic depolarization -> Small,      |
 |   prolonged $Ca^{2+}$ influx.                                                                   |
-| - Indicate activation of Phosphatases (Calcineurin/PP1).                                        |
+| - Indicate activation of Phosphatases (Calcineurin/PP1 emphasized).                             |
 | - Show downstream effects: Dephosphorylation of AMPARs & Removal (internalization) of AMPARs. |
 | - Result: Depressed synapse (smaller EPSP).                                                     |
 +-------------------------------------------------------------------------------------------------+
 ```
 
-A more temporally precise form of Hebbian plasticity is **Spike-Timing-Dependent Plasticity (STDP)**. STDP experiments revealed that the *relative timing* of presynaptic and postsynaptic action potentials, typically within a window of tens of milliseconds, is crucial for determining the sign and magnitude of synaptic change. In the canonical form of STDP observed at many excitatory synapses, if the presynaptic spike arrives *shortly before* the postsynaptic spike ($\Delta t = t_{\mathrm{post}} - t_{\mathrm{pre}}$ is small and positive, e.g., $< 20-50$ ms), LTP is induced. Conversely, if the presynaptic spike arrives *shortly after* the postsynaptic spike ($\Delta t$ is small and negative, e.g., $> -50-80$ ms), LTD is induced. Spikes occurring further apart in time generally induce no significant change. This timing dependence suggests that synapses can encode information about causality or temporal order in neural activity patterns. The precise shape of the STDP "learning window" (the plot of synaptic change versus $\Delta t$) can vary depending on synapse type, location, neuromodulatory state, and activity history. STDP provides a biologically plausible rule for unsupervised learning based on local temporal correlations in spiking activity, making it highly relevant for OI research and simulation.
+A more temporally precise form of Hebbian plasticity is **Spike-Timing-Dependent Plasticity (STDP)**. STDP experiments revealed that the *precise relative timing* of presynaptic and postsynaptic action potentials, typically within a window of tens of milliseconds, is crucial for determining the sign and magnitude of synaptic change. In the canonical form of STDP observed at many excitatory synapses, if the presynaptic spike arrives *shortly before* the postsynaptic spike ($\Delta t = t_{\mathrm{post}} - t_{\mathrm{pre}}$ is small and positive, e.g., $< 20-50$ ms), LTP is induced. Conversely, if the presynaptic spike arrives *shortly after* the postsynaptic spike ($\Delta t$ is small and negative, e.g., $> -50-80$ ms), LTD is induced. Spikes occurring further apart in time generally induce no significant change. The graphical representation of synaptic change versus the time difference $\Delta t$ is known as the **STDP learning window**. The exact shape, width, and polarity of this window can vary significantly depending on factors such as the specific synapse type, its location on the dendritic tree, the baseline firing rates, the presence of neuromodulators, and developmental stage. STDP provides a powerful, biologically plausible mechanism for unsupervised learning based on local temporal correlations, potentially enabling sequence learning and refinement of temporal codes.
 
 ```
 +-------------------------------------------------------------------------------------------------+
@@ -117,24 +123,24 @@ A more temporally precise form of Hebbian plasticity is **Spike-Timing-Dependent
 +-------------------------------------------------------------------------------------------------+
 ```
 
-Beyond plasticity at individual synapses, **structural plasticity** involves physical changes in neuronal structure, such as the formation of new synapses (synaptogenesis), elimination of existing synapses (pruning), growth or retraction of dendritic spines (postsynaptic specializations), or even changes in axonal branching. These structural changes, often occurring over longer timescales (hours to days or longer) and influenced by activity, provide another layer of adaptability, allowing networks to physically rewire themselves in response to experience or during development. While harder to study and implement in OI systems currently, structural plasticity is likely crucial for long-term memory storage and network optimization *in vivo*.
+Beyond functional changes at existing synapses, **structural plasticity** involves the physical remodeling of neuronal connections and morphology over longer timescales (hours to days or longer). This includes **synaptogenesis** (formation of new synapses), **synaptic elimination/pruning** (removal of existing ones), dynamics of **dendritic spines** (changes in number, size, shape associated with LTP/LTD), and **axonal/dendritic remodeling** (growth or retraction of branches). While challenging to study in current OI systems, structural plasticity is crucial for long-term memory and network optimization *in vivo*.
 
-In addition to changes at synapses, neurons can also modify their own intrinsic electrical properties in an activity-dependent manner, a phenomenon known as **intrinsic plasticity**. This involves changes in the density, distribution, or kinetics of various voltage-gated ion channels (like $Na^{+}$, $K^{+}$, $Ca^{2+}$, or HCN channels) in the soma, dendrites, or axon initial segment. Such changes can alter a neuron's input-output function, affecting its firing threshold ($V_T$), firing rate response (gain modulation), firing pattern (e.g., bursting vs. regular spiking), or the shape and propagation of action potentials. Intrinsic plasticity often acts homeostatically, helping to stabilize neuronal firing rates within an optimal range despite large changes in synaptic input strength or overall network activity levels, thereby preventing runaway excitation or silence and maintaining network stability during learning. It can also contribute directly to learning and memory by altering how neurons process specific inputs.
+In addition to modifying connections, neurons exhibit **intrinsic plasticity**, activity-dependent changes in their own electrical properties. This involves modulating the density, location, or function of various **voltage-gated ion channels** ($Na^{+}$, $K^{+}$, $Ca^{2+}$, HCN, etc.). These changes alter the neuron's input-output function, affecting its firing threshold ($V_T$), firing rate response (f-I curve gain), firing pattern (bursting/regular), or action potential shape. Intrinsic plasticity often serves **homeostatic** functions, stabilizing firing rates, but can also directly contribute to learning by altering information processing.
 
-**Homeostatic plasticity** represents a crucial set of mechanisms working in concert with Hebbian plasticity to maintain overall network stability and function. While Hebbian rules (LTP/LTD/STDP) tend to involve positive feedback loops that could destabilize networks, homeostatic mechanisms provide negative feedback to keep activity levels within a functional dynamic range. **Synaptic scaling** is a prominent example, where neurons globally adjust the strength of all their incoming excitatory synapses multiplicatively (up or down) to counteract sustained changes in their own overall activity level, aiming to maintain a target average firing rate. **Intrinsic plasticity** mechanisms that adjust firing thresholds or conductances also contribute significantly to homeostasis. Together, Hebbian and homeostatic plasticity allow networks to learn specific patterns while remaining dynamically stable.
+**Homeostatic plasticity** comprises mechanisms that maintain network stability despite ongoing Hebbian plasticity, which can be destabilizing. **Synaptic scaling** is a key example, where neurons globally adjust the strength ($w$) of all incoming excitatory synapses multiplicatively ($w \rightarrow \alpha w$) to counteract sustained changes in their own activity, maintaining a target average firing rate. Intrinsic plasticity also contributes significantly to homeostasis. Together, Hebbian and homeostatic mechanisms allow networks to learn while remaining dynamically stable.
 
 **3.3 Network Dynamics: Emergent Activity Patterns**
 
-Individual neurons and synapses are the building blocks, but the computational power of the brain, and potentially of OI systems, arises from the collective, dynamic activity of large populations of interconnected neurons – the **network dynamics**. These dynamics are emergent properties, arising from the interactions of the components but often exhibiting complex behaviors not obvious from studying isolated elements. Understanding how information is represented and processed within these complex, time-varying patterns of network activity is a central challenge in neuroscience and crucial for interpreting OI outputs. Key aspects include neural coding, network oscillations, and neuronal synchrony.
+The computational power of neural systems arises from the collective, dynamic activity of large populations of interconnected neurons – the **network dynamics**. These dynamics are emergent properties, not simply predictable from isolated components. Understanding how information is represented and processed within these complex patterns is crucial for OI. Key aspects include neural coding, oscillations, and synchrony.
 
-**Neural coding** refers to the ways information is represented by neural activity. Several potential schemes operate in the brain:
-    *   **Rate Coding:** Information encoded in the average firing rate (spikes/second) of neurons.
-    *   **Temporal Coding:** Information encoded in the precise timing of spikes or temporal patterns.
-    *   **Population Coding:** Information represented by the pattern of activity across a population.
-    *   **Sparse Coding:** A population code where only a small subset of neurons is active.
-Decoding the neural codes used by organoid networks is a key task for OI analysis (Chapter 8).
+**Neural coding** refers to how information is represented by neural activity. Potential schemes include:
+    *   **Rate Coding:** Information in the average firing rate $f$.
+    *   **Temporal Coding:** Information in the precise timing of spikes $t_{sp}$.
+    *   **Population Coding:** Information in the pattern of activity across a population vector $\mathbf{a}(t)$.
+    *   **Sparse Coding:** A population code with low population activity $a_p = \frac{(\sum_i x_i)^2}{\sum_i x_i^2}$.
+Decoding these codes in organoids is key for OI analysis (Chapter 8).
 
-A prominent feature of brain activity, also observed in maturing organoids, is **network oscillations**: rhythmic, synchronized fluctuations in population activity across frequency bands like Delta ($\delta < 4$ Hz), Theta ($\theta$ 4-8 Hz), Alpha ($\alpha$ 8-12 Hz), Beta ($\beta$ 13-30 Hz), and Gamma ($\gamma$ 30-100+ Hz). These oscillations arise from network interactions (e.g., E-I loops like PING/ING for gamma) and are implicated in temporal coordination, information routing (communication through coherence), sensory gating, feature binding, and gating plasticity. Characterizing oscillations in organoids is an important functional benchmark.
+**Network oscillations**, rhythmic fluctuations in population activity, are ubiquitous in the brain and observed in maturing organoids. Frequencies are categorized into bands: Delta ($\delta < 4$ Hz), Theta ($\theta$ 4-8 Hz), Alpha ($\alpha$ 8-12 Hz), Beta ($\beta$ 13-30 Hz), and Gamma ($\gamma$ 30-100+ Hz). Oscillations arise from network interactions (e.g., E-I loops like PING/ING for gamma) and are implicated in temporal coordination, communication (communication through coherence), sensory gating, feature binding, and gating plasticity. Characterizing organoid oscillations is a functional benchmark.
 
 ```
 +-----------------------------------------------------------------------------+
@@ -149,46 +155,48 @@ A prominent feature of brain activity, also observed in maturing organoids, is *
 +-----------------------------------------------------------------------------+
 ```
 
-**Neuronal synchrony**, where neurons fire together in time or phase, is closely related to oscillations. Synchronous firing is thought to enhance signal impact and play roles in binding and communication. Measures like cross-correlation, coherence, and phase-locking value quantify synchrony. Analyzing synchrony patterns in organoids provides insights into their dynamic organization. Aberrant synchrony is also relevant for disease modeling (e.g., epilepsy).
+**Neuronal synchrony**, where neurons fire together in time or phase, is linked to oscillations. Synchronous firing enhances signal impact and may play roles in binding and communication. Measures like cross-correlation $C_{ij}(\tau) = \langle x_i(t) x_j(t+\tau) \rangle$, coherence, and phase-locking value quantify synchrony. Analyzing synchrony in organoids reveals dynamic organization. Aberrant synchrony is relevant for disease modeling.
 
-More complex dynamics like **attractor dynamics** may also emerge. In this framework, network activity converges towards stable patterns (attractors) representing memories or decisions. Input can push the network into an attractor's basin, leading to pattern completion or retrieval. Investigating attractor-like properties (e.g., persistent activity, distinct state transitions) in organoids is relevant for understanding their potential for memory and decision-making within OI.
+More complex dynamics like **attractor dynamics** may also emerge, where network activity converges towards stable patterns representing memories or decisions. Input can push the network into an attractor's basin, performing pattern completion. Investigating attractor-like properties (e.g., persistent activity) in organoids relates to their potential memory and decision-making functions within OI.
 
 **3.4 Learning Paradigms: Biological Perspectives**
 
-Learning, the process of adapting behavior or representations based on experience, is central to intelligence and OI. Neuroscience highlights several learning paradigms relevant for training organoid systems.
+Learning, adaptive change based on experience, is central to intelligence and OI. Neuroscience identifies several relevant paradigms.
 
-**Unsupervised learning** involves adapting to input statistics without explicit feedback. **Hebbian learning** and **STDP** are key mechanisms, strengthening connections between correlated neurons, allowing networks to learn features, associations, and statistical regularities from input data. Competitive mechanisms can refine these representations. Much plasticity observed in OI likely falls under this category.
+**Unsupervised learning** involves adapting to input statistics without explicit feedback, using local rules like **Hebbian learning** and **STDP**. These allow networks to learn correlations, form associations, extract features, and self-organize representations based on input activity patterns. Much plasticity observed in OI likely falls into this category.
 
-**Supervised learning**, requiring labeled examples and error signals, faces biological plausibility challenges regarding how error signals are computed and propagated in the brain. While theories exist, mechanisms analogous to backpropagation are not well established biologically. Implementing supervised learning in OI might involve external error calculation and feedback modulation, but remains difficult.
+**Supervised learning**, requiring labeled examples and error signals, faces biological plausibility challenges regarding error computation and propagation (the **credit assignment problem**). While theories exist, mechanisms like backpropagation are not directly implemented biologically. Achieving supervised learning in OI might involve external error calculation and feedback modulation, but remains difficult.
 
-**Reinforcement learning (RL)** provides a biologically more plausible framework for learning goal-directed behaviors based on scalar reward signals. The agent learns optimal actions through trial-and-error to maximize cumulative reward. The **dopamine** system is strongly implicated in signaling reward prediction errors ($RPE = R_{received} - R_{expected}$), modulating plasticity (e.g., gating STDP) and action selection. Implementing RL in OI involves decoding organoid activity as actions, evaluating outcomes, generating a reward signal (e.g., via stimulation mimicking dopamine effects), and using this feedback to shape network plasticity.
+**Reinforcement learning (RL)** provides a biologically plausible framework for learning goal-directed behaviors based on scalar **reward** signals ($r(t)$). The agent learns a policy $\pi(a|s)$ to maximize cumulative reward $\sum_t \gamma^t r_t$ through trial-and-error. The **dopamine** system is strongly implicated in signaling reward prediction errors ($\delta = r + \gamma V(s') - V(s)$), which modulate plasticity (e.g., gating STDP) and action selection. Implementing RL in OI involves decoding organoid activity as actions, evaluating outcomes, generating reward signals (e.g., via stimulation mimicking dopamine), and using feedback to shape plasticity.
 
 ```
 +-------------------------------------------------------------------------------------------------+
-| Figure 3.6: Biological Learning Paradigms Relevant to OI                                        |
+| Figure 3.6: Biological Learning Paradigms Relevant to OI - Conceptual Schematics                |
 |-------------------------------------------------------------------------------------------------|
 | Content:                                                                                        |
-| Simple schematic diagrams illustrating the core concepts:                                       |
+| Simplified diagrams illustrating the core concepts:                                             |
 | (A) **Unsupervised Learning (Hebbian/STDP):** Input -> [Organoid + Local Plasticity Rules] -> Output.|
 |     Emphasis: Learning driven by input correlations/timing. No external teacher/reward.          |
 | (B) **Supervised Learning (Conceptual):** Input -> [Organoid] -> Actual Output. Target Output  |
-|     provided externally -> Error calculation -> Error signal feeds back to modify Organoid       |
-|     (Biological mechanism for error feedback is challenging).                                   |
-| (C) **Reinforcement Learning (Biological Analog):** State -> [Organoid (Policy)] -> Action ->  |
-|     [Environment Interaction] -> Outcome -> [Reward Function] -> Scalar Reward Signal -> Modulates |
-|     Plasticity/Activity in Organoid (e.g., via simulated neuromodulation).                      |
+|     provided externally -> Error calculation -> Error signal $\epsilon$ feeds back to modify Organoid |
+|     (Biological mechanism for error feedback $\epsilon$ is challenging).                        |
+| (C) **Reinforcement Learning (Biological Analog):** State $s$ -> [Organoid (Policy $\pi$)] -> Action $a$ -> |
+|     [Environment Interaction] -> Outcome / New State $s'$ -> [Reward Function] -> Scalar Reward $r$ -> Modulates |
+|     Plasticity/Activity in Organoid (e.g., via simulated neuromodulation $d(t)$).                |
 +-------------------------------------------------------------------------------------------------+
 ```
 
-Other relevant forms include **non-associative learning** (habituation, sensitization), based on simpler plasticity mechanisms, which can serve as basic functional benchmarks for OI systems before attempting more complex learning paradigms.
+Other forms like **non-associative learning** (habituation, sensitization), based on simpler mechanisms, serve as basic functional benchmarks for OI systems.
 
 **3.5 Bridging to Computation & Introduction to Brian2 Simulation**
 
-The biological principles of signaling, plasticity, and dynamics form the basis for computation in neural systems. Activity patterns represent information (encoding), network dynamics transform these patterns (processing), and plasticity adapts the network for better performance (learning). Computational simulation using tools like **Brian2** allows us to model these processes *in silico*. Brian2 is a Python library for simulating spiking neural networks (SNNs), enabling definition of neuron/synapse models with realistic parameters and equations.
+Biological signaling, plasticity, and dynamics form the basis for computation. Activity patterns represent information (encoding), dynamics transform patterns (processing), and plasticity adapts the network (learning). Computational simulation using tools like **Brian2** allows modeling these processes *in silico*. Brian2 is a Python library for simulating spiking neural networks (SNNs).
 
-The **Leaky Integrate-and-Fire (LIF)** neuron is a computationally efficient model capturing key neuronal behavior: integrating inputs (like charging a capacitor $C$) and firing a spike when voltage $V_m$ crosses a threshold $V_T$, followed by a reset to $V_{reset}$. The leak conductance $g_L$ causes $V_m$ to decay towards the resting potential $E_L$. The sub-threshold dynamics are described by the differential equation:
+The **Leaky Integrate-and-Fire (LIF)** neuron is a computationally efficient model capturing integration and firing. Sub-threshold dynamics follow:
 $$C \frac{dV_{m}}{dt} = g_{L}(E_{L} - V_{m}) + I_{syn}(t) + I_{ext}(t)$$
-We can simulate this in Brian2:
+When $V_m$ reaches $V_T$, a spike occurs, and $V_m$ resets to $V_{reset}$.
+
+**Code 3.1:** Simulating a single LIF neuron receiving a constant input current using Brian2:
 
 ```python
 # Notebook: notebooks/Chapter3_Simulations.ipynb
@@ -234,12 +242,12 @@ run(duration)
 # --- Plot the Results ---
 figure(figsize=(10, 4))
 plot(state_mon.t/ms, state_mon.v[0]/mV) # Plot recorded voltage vs. time
-axhline(VT/mV, ls='--', color='r', label=f'Threshold VT ({VT/mV:.1f} mV)')
-axhline(V_reset/mV, ls=':', color='g', label=f'Reset ($V_{{reset}}$) ({V_reset/mV:.1f} mV)') # Using LaTeX in label
+axhline(VT/mV, ls='--', color='r', label=f'Threshold $V_T$ ({VT/mV:.1f} mV)') # LaTeX V_T
+axhline(V_reset/mV, ls=':', color='g', label=f'Reset ($V_{{reset}}$) ({V_reset/mV:.1f} mV)') # LaTeX V_reset
 if len(spike_mon.t) > 0:
     vlines(spike_mon.t/ms, V_reset/mV - 10*mV, VT/mV + 10*mV, color='gray', linestyle='--', label='Spikes')
 xlabel('Time (ms)')
-ylabel('Membrane Potential $V_m$ (mV)') # Using LaTeX in label
+ylabel('Membrane Potential $V_m$ (mV)') # LaTeX V_m
 title('Simulation of a Leaky Integrate-and-Fire (LIF) Neuron')
 legend(loc='upper right')
 grid(True, alpha=0.5)
@@ -250,15 +258,15 @@ print(f"Recorded spike times (ms): {spike_mon.t/ms}")
 
 ```
 
-*Explanation:*
--   **Code Setup:** Imports Brian2, defines simulation/neuron parameters with units (e.g., `C`, `gL`, `$E_L$`, `$V_T$`, `$V_{reset}$`, `$\tau_{ref}$`, `$I_{input}$`).
--   **Model Equation (`eqs`):** Defines the LIF differential equation `dv/dt = (gL*(EL-v) + I_input)/C` in Brian2 syntax. `: volt` specifies units, `(unless refractory)` handles the refractory period.
--   **Neuron Creation (`NeuronGroup`):** Creates 1 neuron with the specified model, threshold (`v>VT`), reset (`v=V_reset`), and refractory period (`tau_ref`).
--   **Initialization & Monitors:** Sets initial voltage to `$E_L$`, creates monitors for spikes (`SpikeMonitor`) and voltage (`StateMonitor`).
--   **Run & Plot:** Executes the simulation and plots the voltage trace ($V_m$) over time, showing integration, spiking at `$V_T$`, reset to `$V_{reset}$, and regular firing due to constant input. Spike times are marked.
-*This code can be found in `notebooks/Chapter3_Simulations.ipynb`.*
+*Explanation (Code 3.1):*
+-   **Setup:** Imports Brian2, defines parameters with physical units (capacitance $C$, leak conductance $g_L$, leak potential $E_L$, threshold $V_T$, reset $V_{reset}$, refractory $\tau_{ref}$, input current $I_{input}$).
+-   **Model:** Defines the LIF differential equation `dv/dt = (gL*(EL-v) + I_input)/C`.
+-   **Neuron:** Creates 1 neuron using `NeuronGroup` with the defined dynamics, threshold, reset, and refractory period.
+-   **Monitors:** Sets up `SpikeMonitor` and `StateMonitor` to record spike times and voltage $V_m$.
+-   **Run & Plot:** Executes the simulation. The plot shows $V_m$ integrating the input, firing at $V_T$, resetting to $V_{reset}$, and exhibiting regular spiking.
+*This simulation corresponds to Code 3.1 and can be found in `notebooks/Chapter3_Simulations.ipynb`.*
 
-Next, we simulate simple **synaptic transmission** between two neurons using a simplified 'delta' synapse where a presynaptic spike causes an instantaneous postsynaptic voltage jump.
+**Code 3.2:** Simulating simple **synaptic transmission** between two neurons using a simplified 'delta' synapse.
 
 ```python
 # Notebook: notebooks/Chapter3_Simulations.ipynb
@@ -269,7 +277,7 @@ from brian2 import *
 # --- Simulation Parameters ---
 duration = 50*ms
 
-# --- Neuron Parameters (same as previous example) ---
+# --- Neuron Parameters (same as Code 3.1) ---
 C = 281*pF; gL = 30*nS; EL = -70.6*mV; VT = -50.4*mV; V_reset = EL; tau_ref = 2*ms
 
 # --- Define LIF neuron model ---
@@ -320,8 +328,8 @@ if len(spike_mon.t[spike_mon.i==0]) > 0:
 if len(spike_mon.t[spike_mon.i==1]) > 0:
     vlines(spike_mon.t[spike_mon.i==1]/ms, EL/mV - 5*mV, VT/mV + 5*mV, color='C1', linestyle=':', label='Neuron 1 Spikes')
 xlabel('Time (ms)')
-ylabel('Membrane Potential $V_m$ (mV)')
-title('Simulation of Simple Excitatory Synaptic Transmission (Neuron 0 $\\rightarrow$ Neuron 1)') # Using LaTeX arrow
+ylabel('Membrane Potential $V_m$ (mV)') # LaTeX V_m
+title('Simulation of Simple Excitatory Synaptic Transmission (Neuron 0 $\\rightarrow$ Neuron 1)') # LaTeX arrow
 legend(loc='best')
 grid(True, alpha=0.5)
 show()
@@ -330,14 +338,14 @@ print(f"Neuron 0 spike times (ms): {spike_mon.t[spike_mon.i==0]/ms}")
 print(f"Neuron 1 spike times (ms): {spike_mon.t[spike_mon.i==1]/ms}")
 ```
 
-*Explanation:*
--   **Synapse Model:** Defines a synaptic weight `w` (in volts) and an action `on_pre='v_post += w'` causing an instantaneous voltage increase in the postsynaptic neuron upon presynaptic spike arrival.
--   **Connection:** Connects neuron 0 to neuron 1 with a weight `w = 5*mV`.
+*Explanation (Code 3.2):*
+-   **Synapse Model:** Uses a simple 'delta' synapse where `on_pre='v_post += w'` causes an instantaneous postsynaptic voltage jump by weight $w$.
+-   **Connection:** Connects neuron 0 to 1 with $w = 5$ mV.
 -   **Forced Spiking:** Neuron 0 is forced to spike at 10ms and 30ms.
--   **Result:** The plot shows that each spike in neuron 0 causes a rapid 5mV depolarization (EPSP) in neuron 1, demonstrating basic synaptic transmission.
-*This code can be found in `notebooks/Chapter3_Simulations.ipynb`.*
+-   **Result:** The plot shows that spikes in neuron 0 cause immediate 5mV EPSPs in neuron 1, demonstrating basic transmission.
+*This simulation corresponds to Code 3.2 and can be found in `notebooks/Chapter3_Simulations.ipynb`.*
 
-Finally, we simulate a basic **STDP** rule where synaptic weight `w` changes based on the relative timing $\Delta t$ of pre- and postsynaptic spikes.
+**Code 3.3:** Simulating a basic **STDP** rule where synaptic weight $w$ changes based on relative spike timing $\Delta t$.
 
 ```python
 # Notebook: notebooks/Chapter3_Simulations.ipynb
@@ -368,8 +376,7 @@ neurons.v = Vr
 
 # --- Define the STDP synapse model equations ---
 # w: synaptic weight (dimensionless, 0 to 1)
-# A_pre: presynaptic trace variable
-# A_post: postsynaptic trace variable
+# A_pre, A_post: decaying traces for pre/post spikes
 stdp_eqs = '''
 w : 1
 dA_pre/dt = -A_pre / tau_pre : 1 (event-driven)
@@ -396,7 +403,7 @@ synapses_stdp.connect(i=0, j=1)
 synapses_stdp.w = 0.05 # Initial weight
 synapses_stdp.A_pre = 0; synapses_stdp.A_post = 0 # Initial traces
 
-# --- Force neurons to fire with pre-before-post timing (Δt = +5ms) ---
+# --- Force neurons to fire with pre-before-post timing ($\Delta t = +5$ms) ---
 pre_spike_times = [20, 40, 60, 80] * ms
 post_spike_times = [25, 45, 65, 85] * ms
 pre_spike_generator = SpikeGeneratorGroup(1, [0]*len(pre_spike_times), pre_spike_times)
@@ -430,17 +437,17 @@ tight_layout(); show()
 # Print initial and final weights
 print(f"Initial weight w(0->1): {syn_mon.w[0][0]:.4f}")
 print(f"Final weight w(0->1): {syn_mon.w[0][-1]:.4f}")
+
 ```
 
-*Explanation:*
--   **STDP Model:** Defines synaptic weight `w` and two trace variables `$A_{pre}$` and `$A_{post}$` which decay exponentially with time constants `$\tau_{pre}$` and `$\tau_{post}$`.
--   **`on_pre`:** When presynaptic spike occurs, it delivers an EPSP, *updates the weight based on the current postsynaptic trace `$A_{post}$`* (causing LTD if `$A_{post}$` is negative from a recent postsynaptic spike), and increases the presynaptic trace `$A_{pre}$`.
--   **`on_post`:** When postsynaptic spike occurs, it increases the postsynaptic trace `$A_{post}$` (by a negative amount `$A_{post}^{LTD}$`) and *updates the weight based on the current presynaptic trace `$A_{pre}$`* (causing LTP if `$A_{pre}$` is positive from a recent presynaptic spike).
--   **Timing:** Spikes are forced such that neuron 0 fires 5ms before neuron 1 (`$\Delta t = +5$`ms).
--   **Result:** The plot shows the synaptic weight `w` increases incrementally with each spike pair, demonstrating LTP induction due to the pre-before-post timing, consistent with the canonical STDP rule.
-*This code can be found in `notebooks/Chapter3_Simulations.ipynb`.*
+*Explanation (Code 3.3):*
+-   **STDP Model:** Defines weight `w`, decaying traces `$A_{pre}$` (increase by `$A_{pre}^{LTP}$` on pre-spike) and `$A_{post}$` (increase by `$A_{post}^{LTD}$` on post-spike).
+-   **Update Rules:** `on_pre` updates $w$ based on `$A_{post}$` (LTD); `on_post` updates $w$ based on `$A_{pre}$` (LTP). `clip` ensures $w \in [w_{min}, w_{max}]$.
+-   **Timing:** Spikes forced with pre-before-post timing ($\Delta t = +5$ms).
+-   **Result:** Plot shows weight $w$ increasing with each spike pair, demonstrating LTP induction via STDP.
+*This simulation corresponds to Code 3.3 and can be found in `notebooks/Chapter3_Simulations.ipynb`.*
 
-These examples provide a first glimpse into how computational simulation with Brian2 can be used to explore the fundamental principles of neural dynamics and plasticity that are central to the concept of Organoid Intelligence. Subsequent chapters will leverage these tools to investigate more complex network behaviors and learning capabilities.
+These examples provide a practical foundation using Brian2 to model fundamental neural processes. Later chapters will expand on these to simulate more complex OI-relevant network behaviors and learning rules.
 
 ---
 
