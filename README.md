@@ -218,7 +218,7 @@
     *   Discussion of near-term applications and long-term goals.
     *   Final thoughts on responsible innovation, ethical deliberation, and open dialogue. Call to action for collaborative research.
 
-*   **Appendix: A Practical Introduction to Brian2 for Organoid Intelligence Research**
+**Appendix: A Practical Introduction to Brian2 for Organoid Intelligence Research**
     *   **Purpose:** To provide readers (especially those less familiar with computational neuroscience or Python) with the basic tools needed to understand, run, and modify the Brian2 simulation examples presented in the book.
     *   **Proposed Content:**
         *   Brief introduction to spiking neural network simulation.
