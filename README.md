@@ -7,14 +7,14 @@
 
 **Part I: Introduction and Foundational Concepts**
 
-*   **Chapter 1: Defining Organoid Intelligence: A New Frontier**
+*   [**Chapter 1: Defining Organoid Intelligence: A New Frontier**](chapter-01.md)
     *   **Content:**
         *   Introduction to the concept of OI / Biological Computing.
         *   Historical context: Convergence of stem cell biology, neuroscience, AI, engineering.
         *   The "hardware" (organoid) vs. "software" (learning rules, interfaces) analogy.
         *   Vision and potential impact of OI (biocomputers, disease models, brain insights).
         *   Key challenges and interdisciplinary nature.
-*   **Chapter 2: Biological Substrates: Brain Organoids as Living Neural Networks**
+*   [**Chapter 2: Biological Substrates: Brain Organoids as Living Neural Networks**](chapter-02.md)
     *   **Content:**
         *   Fundamentals of stem cells (ESCs, iPSCs) and directed neural differentiation.
         *   Methods for generating brain organoids (regional specificities: cortical, etc.).
@@ -22,7 +22,7 @@
         *   Current limitations: Maturity, vascularization, reproducibility, cellular diversity.
         *   Methods for enhancing maturation and functional connectivity.
         *   Comparison with *in vivo* brain development.
-*   **Chapter 3: Principles of Neural Computation and Learning**
+*   [**Chapter 3: Principles of Neural Computation and Learning**](chapter-03.md)
     *   **Content:**
         *   Basics of neuronal signaling: Action potentials, synaptic transmission.
         *   Neural plasticity: Synaptic (Hebbian, LTP/LTD, STDP) and intrinsic plasticity.
